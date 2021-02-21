@@ -1,8 +1,8 @@
 ---
-name: Template
-main: blugin\template\Loader
+name: KorTimings
+main: kim\present\kortimings\Loader
 version: 0.1.0
 api: [ 4.0.0 ]
-author: AuthorName
-description: Template of Pocketmine-MP plugin
+author: PresentKim
+description: 타이밍 보고서의 한글을 자동으로 변환해서 처리해주는 플러그인
 ...
