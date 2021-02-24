@@ -1,4 +1,30 @@
 <?php
+
+/**
+ *  ____                           _   _  ___
+ * |  _ \ _ __ ___  ___  ___ _ __ | |_| |/ (_)_ __ ___
+ * | |_) | '__/ _ \/ __|/ _ \ '_ \| __| ' /| | '_ ` _ \
+ * |  __/| | |  __/\__ \  __/ | | | |_| . \| | | | | | |
+ * |_|   |_|  \___||___/\___|_| |_|\__|_|\_\_|_| |_| |_|
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * @author  PresentKim (debe3721@gmail.com)
+ * @link    https://github.com/PresentKim
+ * @license https://www.gnu.org/licenses/lgpl-3.0 LGPL-3.0 License
+ *
+ *   (\ /)
+ *  ( . .) ♥
+ *  c(")(")
+ *
+ * @noinspection PhpIllegalPsrClassPathInspection
+ * @noinspection PhpDocSignatureInspection
+ * @noinspection SpellCheckingInspection
+ */
+
 declare(strict_types=1);
 
 namespace kim\present\kortimings\command;
@@ -15,12 +41,18 @@ use pocketmine\Server;
 use pocketmine\timings\TimingsHandler;
 use pocketmine\utils\InternetException;
 
+use function http_build_query;
+use function implode;
+use function is_array;
+use function json_decode;
+use function strtolower;
+
 final class KorTimingsCommand extends TimingsCommand{
     public function execute(CommandSender $sender, string $commandLabel, array $args) : bool{
         if(!$this->testPermission($sender))
             return true;
 
-        //Paste가 아닌 경우 PM에서 처리하도록 패스
+        //If not "paste" mode, pass it to be processed by PMMP
         if(strtolower($args[0] ?? "") !== "paste")
             return parent::execute($sender, $commandLabel, $args);
 
